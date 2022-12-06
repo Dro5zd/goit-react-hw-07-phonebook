@@ -1,6 +1,5 @@
 {
   "name": "goit-react-hw-06-phonebook",
-  "homepage": "https://dro5zd.github.io/goit-react-hw-06-phonebook/",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -8,8 +7,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.1",
@@ -22,6 +20,7 @@
     "@styled-icons/material": "^10.46.0",
     "@styled-icons/remix-fill": "^10.46.0",
     "@styled-icons/typicons": "^10.46.0",
+    "gh-pages": "^4.0.0",
     "nanoid": "^4.0.0",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
@@ -35,6 +34,7 @@
   "devDependencies": {
     "@types/react": "^18.0.24",
     "@types/react-dom": "^18.0.8",
+    "@types/styled-components": "^5.1.26",
     "@vitejs/plugin-react": "^2.2.0",
     "typescript": "^4.6.4",
     "vite": "^3.2.3"
