@@ -1,0 +1,42 @@
+{
+  "name": "goit-react-hw-06-phonebook",
+  "homepage": "https://dro5zd.github.io/goit-react-hw-06-phonebook/",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
+  },
+  "dependencies": {
+    "@reduxjs/toolkit": "^1.9.1",
+    "@styled-icons/bootstrap": "^10.46.0",
+    "@styled-icons/boxicons-solid": "^10.46.0",
+    "@styled-icons/evaicons-solid": "^10.46.0",
+    "@styled-icons/fluentui-system-filled": "^10.46.0",
+    "@styled-icons/heroicons-outline": "^10.46.0",
+    "@styled-icons/heroicons-solid": "^10.46.0",
+    "@styled-icons/material": "^10.46.0",
+    "@styled-icons/remix-fill": "^10.46.0",
+    "@styled-icons/typicons": "^10.46.0",
+    "nanoid": "^4.0.0",
+    "prop-types": "^15.8.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-icons": "^4.6.0",
+    "react-redux": "^8.0.5",
+    "react-scripts": "5.0.1",
+    "redux-persist": "^6.0.0",
+    "styled-components": "^5.3.6"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.24",
+    "@types/react-dom": "^18.0.8",
+    "@vitejs/plugin-react": "^2.2.0",
+    "typescript": "^4.6.4",
+    "vite": "^3.2.3"
+  }
+}
