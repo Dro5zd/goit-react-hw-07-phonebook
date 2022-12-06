@@ -11,7 +11,7 @@ import {
     DeleteIcon
 } from './ContactsList.styled';
 import {Notification} from '../Notification/Notification';
-import {MouseEvent, useState} from 'react';
+import {MouseEvent} from 'react';
 import {useAppSelector} from '../../redux/store';
 
 

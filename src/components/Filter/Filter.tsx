@@ -1,6 +1,5 @@
 import {FilterInput, FilterWrapper, SearchIcon} from './Filter.styled';
 import {ChangeEvent, useState} from 'react';
-import {deleteContact} from '../../redux/contactsSlice';
 import {useAppDispatch} from '../../redux/store';
 import {filterContacts} from '../../redux/filterSlice';
 

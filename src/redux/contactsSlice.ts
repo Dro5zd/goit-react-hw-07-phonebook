@@ -1,6 +1,5 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {nanoid} from 'nanoid';
-import {RootState} from './store';
 
 export interface IContacts {
     id: string,
@@ -8,11 +7,7 @@ export interface IContacts {
     phoneNumber: string
 }
 
-const contactsInitialState: IContacts[] = [{
-    id: '',
-    name: '',
-    phoneNumber: ''
-}];
+const contactsInitialState: IContacts[] = [];
 
 const contactsSlice = createSlice({
     name: 'contacts',
@@ -34,11 +29,11 @@ const contactsSlice = createSlice({
         },
 
         deleteContact(state, action: PayloadAction<string>) {
-                const index = state.findIndex(d => d.id === action.payload)
-                state.splice(index, 1);
+            const index = state.findIndex(d => d.id === action.payload)
+            state.splice(index, 1);
         }
     }
 })
 
-export const { addContact, deleteContact } = contactsSlice.actions;
+export const {addContact, deleteContact} = contactsSlice.actions;
 export const contactsReducer = contactsSlice.reducer
