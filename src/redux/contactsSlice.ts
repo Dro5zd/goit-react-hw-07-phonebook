@@ -19,6 +19,13 @@ const contactsInitialState: IInitState = {
     error: null,
 };
 
+const handlePending = (state: IInitState) => {
+    state.isLoading = true;
+};
+const handleRejected = (state: IInitState, action: any) => {
+    state.isLoading = false;
+    state.error = action.payload;
+};
 
 const contactsSlice = createSlice({
     name: 'contacts',
@@ -26,9 +33,12 @@ const contactsSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder
-            .addCase(fetchContacts.pending, (state: IInitState) => {
-                state.isLoading = true;
-            })
+            .addCase(fetchContacts.pending, handlePending)
+            .addCase(addContact.pending, handlePending)
+            .addCase(deleteContact.pending, handlePending)
+            .addCase(fetchContacts.rejected, handleRejected)
+            .addCase(addContact.rejected, handleRejected)
+            .addCase(deleteContact.rejected, handleRejected)
             .addCase(fetchContacts.fulfilled, (state: IInitState, action: PayloadAction<IContacts[]>) => {
                 state.isLoading = false;
                 state.error = null;
@@ -44,10 +54,6 @@ const contactsSlice = createSlice({
                 state.error = null;
                 const index = state.contacts.findIndex(d => d.id === action.payload)
                 state.contacts.splice(index, 1);
-            })
-            .addCase(fetchContacts.rejected, (state: IInitState, action: any) => {
-                state.isLoading = false;
-                state.error = action.payload;
             })
     }
 })
