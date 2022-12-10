@@ -11,8 +11,10 @@ import {
     DeleteIcon
 } from './ContactsList.styled';
 import {Notification} from '../Notification/Notification';
-import {MouseEvent} from 'react';
-import {useAppSelector} from '../../redux/store';
+import {MouseEvent, useEffect} from 'react';
+import {useAppDispatch, useAppSelector} from '../../redux/store';
+import {getContactFilter, getContacts} from '../../redux/selectors';
+import {fetchContacts} from '../../redux/operations';
 
 
 interface IContactsList {
@@ -21,8 +23,13 @@ interface IContactsList {
 
 export const ContactsList = ({deleteUser}: IContactsList) => {
 
-    const contacts = useAppSelector(state => state.contacts)
-    const filter = useAppSelector(state => state.filter)
+    const contacts = useAppSelector(getContacts)
+    const filter = useAppSelector(getContactFilter)
+    const dispatch = useAppDispatch()
+
+    useEffect(() => {
+        dispatch(fetchContacts());
+    }, [dispatch]);
     const avatarCreator = (name: string) => {
         const nameSplit = name.split(' ');
         if (nameSplit.length > 1) {
@@ -44,6 +51,7 @@ export const ContactsList = ({deleteUser}: IContactsList) => {
         <ContactsListWrapper>
             <ContactsTitle>Contacts</ContactsTitle>
             <Filter/>
+
             {contacts.length !== 0 ?
                 <ContactsUl>
                     {contacts.filter(item => {

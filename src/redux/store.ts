@@ -1,34 +1,14 @@
-import {combineReducers, configureStore} from '@reduxjs/toolkit';
+import {configureStore} from '@reduxjs/toolkit';
 import {contactsReducer} from './contactsSlice';
 import {filterReducer} from './filterSlice';
-import {FLUSH, PAUSE, PERSIST, persistReducer, persistStore, PURGE, REGISTER, REHYDRATE,} from 'redux-persist'
 import {TypedUseSelectorHook, useDispatch, useSelector} from 'react-redux';
-import storage from 'redux-persist/lib/storage';
-
-const rootReducer = combineReducers({
-    contacts: contactsReducer,
-    filter: filterReducer,
-})
-
-const persistConfig = {
-    key: 'root',
-    storage,
-    blacklist: ['filter']
-}
-
-const persistedReducer = persistReducer(persistConfig, rootReducer)
 
 export const store = configureStore({
-    reducer: persistedReducer,
-    middleware: (getDefaultMiddleware) =>
-        getDefaultMiddleware({
-            serializableCheck: {
-                ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-            },
-        }),
+    reducer: {
+        contacts: contactsReducer,
+        filter: filterReducer,
+    }
 })
-
-export const persistor = persistStore(store)
 
 export type RootState = ReturnType<typeof store.getState>
 export type AppDispatch = typeof store.dispatch

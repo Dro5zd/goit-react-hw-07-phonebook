@@ -3,18 +3,24 @@ import {ContactForm} from './components/ContactForm/ContactForm';
 import {MouseEvent, useState} from 'react';
 import {IphoneWrapper} from './components/IphoneWrapper/IphoneWrapper';
 import {HomeScreen} from './components/HomeScreen/HomeScreen';
-import {addContact, deleteContact} from './redux/contactsSlice'
 import {useAppDispatch, useAppSelector} from './redux/store';
+import {addContact, deleteContact} from './redux/operations';
+import {getContacts, getError, getIsLoading} from './redux/selectors';
 
 export const App = () => {
 
-    const contacts = useAppSelector(state => state.contacts)
+    const contacts = useAppSelector(getContacts)
+    const isLoading = useAppSelector(getIsLoading)
+    const error = useAppSelector(getError)
     const dispatch = useAppDispatch()
 
+
     const [showApp, setShowApp] = useState(true)
+
+
     const addContactHandler = (name: string, phoneNumber: string) => {
         if (!contacts.map(contact => contact.name).includes(name)) {
-            dispatch(addContact(name, phoneNumber))
+            dispatch(addContact({name, phoneNumber}))
         } else alert(`${name} is already in contacts`);
     };
 
@@ -42,6 +48,7 @@ export const App = () => {
                 : <><ContactForm addContact={addContactHandler}
                                  showAppHandler={showAppHandler}
                 />
+                    {isLoading && !error && <b>Request in progress...</b>}
                     <ContactsList deleteUser={deleteUser}/></>}
         </IphoneWrapper>
     );
