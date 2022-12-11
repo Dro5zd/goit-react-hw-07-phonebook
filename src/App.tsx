@@ -5,13 +5,14 @@ import {IphoneWrapper} from './components/IphoneWrapper/IphoneWrapper';
 import {HomeScreen} from './components/HomeScreen/HomeScreen';
 import {useAppDispatch, useAppSelector} from './redux/store';
 import {addContact, deleteContact} from './redux/operations';
-import {getContacts, getError, getIsLoading} from './redux/selectors';
+import {selectContacts, selectError, selectIsLoading} from './redux/selectors';
+
 
 export const App = () => {
 
-    const contacts = useAppSelector(getContacts)
-    const isLoading = useAppSelector(getIsLoading)
-    const error = useAppSelector(getError)
+    const contacts = useAppSelector(selectContacts)
+    const isLoading = useAppSelector(selectIsLoading)
+    const error = useAppSelector(selectError)
     const dispatch = useAppDispatch()
 
 

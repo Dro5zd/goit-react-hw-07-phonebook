@@ -13,7 +13,7 @@ import {
 import {Notification} from '../Notification/Notification';
 import {MouseEvent, useEffect} from 'react';
 import {useAppDispatch, useAppSelector} from '../../redux/store';
-import {getContactFilter, getContacts} from '../../redux/selectors';
+import {selectContactFilter, selectContacts} from '../../redux/selectors';
 import {fetchContacts} from '../../redux/operations';
 
 
@@ -23,8 +23,8 @@ interface IContactsList {
 
 export const ContactsList = ({deleteUser}: IContactsList) => {
 
-    const contacts = useAppSelector(getContacts)
-    const filter = useAppSelector(getContactFilter)
+    const contacts = useAppSelector(selectContacts)
+    const filter = useAppSelector(selectContactFilter)
     const dispatch = useAppDispatch()
 
     useEffect(() => {

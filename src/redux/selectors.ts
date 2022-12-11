@@ -1,6 +1,6 @@
 import {RootState} from './store';
 
-export const getContacts = (state: RootState) => state.contacts.contacts;
-export const getIsLoading = (state: RootState) => state.contacts.isLoading;
-export const getError = (state: RootState) => state.contacts.error;
-export const getContactFilter = (state: RootState) => state.filter;
+export const selectContacts = (state: RootState) => state.contacts.contacts;
+export const selectIsLoading = (state: RootState) => state.contacts.isLoading;
+export const selectError = (state: RootState) => state.contacts.error;
+export const selectContactFilter = (state: RootState) => state.filter;
