@@ -9,6 +9,7 @@
     "preview": "vite preview",
     "deploy": "gh-pages -d dist"
   },
+
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.1",
     "@styled-icons/bootstrap": "^10.46.0",
